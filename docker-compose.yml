@@ -1,0 +1,11 @@
+services:
+  merger-studio:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: merger_frontend_prod
+    ports:
+      - "80:80"
+    restart: always
+    environment:
+      - NODE_ENV=production
