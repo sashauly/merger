@@ -1,0 +1,27 @@
+# === OS / System files ===
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+
+# === JavaScript / Node / Vite Artifacts ===
+node_modules/
+.npm/
+dist/
+web/static/
+*.log
+
+# === Rust / Cargo Artifacts ===
+/target/
+**/*.rs.bk
+Cargo.lock
+
+# === Wasm-pack Generated Assets ===
+# Ignore compiled WASM output directory inside the frontend tree
+# since it is re-generated deterministically on every build step
+web/src/wasm/
+
+# === Environment Configurations ===
+.env
+.env.local
+.env.*.local

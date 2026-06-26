@@ -1,0 +1,26 @@
+{
+  "name": "merger",
+  "version": "1.0.0",
+  "description": "**Merger** is a Progressive Web App (PWA) that recreates the distinct, tactile workflow and creative limitations of vintage 4-track cassette multitrack recorders right in your browser.",
+  "private":true,
+  "workspaces": [
+    "web"
+  ],
+  "scripts": {
+    "dev": "npm run dev --workspace=web",
+    "build": "npm run build --workspace=web",
+    "build:wasm": "cd core-audio && wasm-pack build --target web --out-dir ../web/src/wasm"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sashauly/merger.git"
+  },
+  "keywords": [],
+  "author": "sashauly.code@gmail.com",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/sashauly/merger/issues"
+  },
+  "homepage": "https://github.com/sashauly/merger#readme"
+}
