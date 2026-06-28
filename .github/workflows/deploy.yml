@@ -23,6 +23,23 @@ jobs:
             - name: Checkout repository
               uses: actions/checkout@v4
 
+            # 1. Set up Rust toolchain for WebAssembly compilation
+            - name: Set up Rust
+              uses: dtolnay/rust-toolchain@stable
+              with:
+                  targets: wasm32-unknown-unknown
+
+            # 2. Cache Rust Cargo builds to keep compile times fast
+            - name: Cache Cargo dependencies
+              uses: Swatinem/rust-cache@v2
+
+            # 3. Install wasm-pack to bundle Rust into WebAssembly
+            - name: Install wasm-pack
+              uses: jetli/wasm-pack-action@v0.4.0
+              with:
+                  version: "latest"
+
+            # 4. Set up Node.js with caching
             - name: Set up Node.js
               uses: actions/setup-node@v5
               with:
@@ -30,11 +47,7 @@ jobs:
                   cache: "npm"
                   cache-dependency-path: "package-lock.json"
 
-            - uses: jetli/wasm-pack-action@v0.4.0
-              with:
-                  version: "latest"
-
-            - name: Install, Build Wasm, and Build App
+            - name: Compile and Build App
               run: |
                   npm ci
                   npm run build:wasm
