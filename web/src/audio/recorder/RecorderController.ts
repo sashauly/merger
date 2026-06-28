@@ -1,3 +1,5 @@
+import processorUrl from "./processor?worker&url";
+
 import wasmUrl from "../../wasm/core_audio_bg.wasm?url";
 import { getRecorderEnvironmentDiagnostics } from "./environment";
 import {
@@ -435,9 +437,8 @@ export class RecorderController {
     }
 
     try {
-      await this.audioCtx.audioWorklet.addModule(
-        new URL("./processor.ts", import.meta.url).href,
-      );
+      await this.audioCtx.audioWorklet.addModule(processorUrl);
+
       this.workletNode = new AudioWorkletNode(
         this.audioCtx,
         "four-track-recorder-processor",
